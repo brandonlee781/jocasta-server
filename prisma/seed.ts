@@ -69,12 +69,12 @@ async function main(): Promise<void> {
       },
       characteristics: {
         create: {
-          brawn: 2,
-          agility: 2,
-          intellect: 5,
-          cunning: 3,
-          willpower: 2,
-          presence: 2,
+          Brawn: 2,
+          Agility: 2,
+          Intellect: 5,
+          Cunning: 3,
+          Willpower: 2,
+          Presence: 2,
         },
       },
       derivedAttributes: {
