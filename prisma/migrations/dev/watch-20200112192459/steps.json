@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Specialization",
+      "field": "talents",
+      "type": "Talent"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "TalentTreeNode",
+      "field": "specialization",
+      "arity": "List"
+    }
+  ]
+}

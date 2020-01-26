@@ -1,0 +1,39 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "talent",
+      "type": "TalentTreeNode",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "character",
+      "type": "Character",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "CharacterTalent",
+      "field": "talentId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "CharacterTalent",
+      "field": "row"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "CharacterTalent",
+      "field": "column"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "CharacterTalent",
+      "field": "specialization"
+    }
+  ]
+}

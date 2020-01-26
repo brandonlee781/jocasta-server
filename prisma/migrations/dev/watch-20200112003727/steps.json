@@ -1,0 +1,28 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Specialization",
+      "field": "talents",
+      "type": "TalentTree"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "TalentTreeLocation",
+      "field": "purchased"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTree",
+      "field": "talent",
+      "type": "Talent",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Talent",
+      "field": "trees"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "derivedAttributes",
+      "type": "DerivedAttribute",
+      "arity": "Optional"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Character",
+      "field": "derivedAttribute"
+    }
+  ]
+}

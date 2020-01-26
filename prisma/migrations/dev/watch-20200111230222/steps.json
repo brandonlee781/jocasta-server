@@ -1,0 +1,513 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateEnum",
+      "enum": "TalentActivation",
+      "values": [
+        "Passive",
+        "Action",
+        "Maneuver",
+        "Incidental",
+        "OutOfTurn"
+      ]
+    },
+    {
+      "tag": "CreateEnum",
+      "enum": "TalentTreeConnection",
+      "values": [
+        "TOP",
+        "RIGHT",
+        "BOTTOM",
+        "LEFT"
+      ]
+    },
+    {
+      "tag": "CreateModel",
+      "model": "Career"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Career",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Career",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Career",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Career",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Career",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Career",
+      "field": "skills",
+      "type": "Skill",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Career",
+      "field": "specializations",
+      "type": "Specialization",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "Specialization"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Specialization",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Specialization",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Specialization",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Specialization",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Specialization",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Specialization",
+      "field": "skills",
+      "type": "Skill",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Specialization",
+      "field": "career",
+      "type": "Career",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Specialization",
+      "field": "talents",
+      "type": "Talent",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "TalentTreeLocation"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeLocation",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeLocation",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeLocation",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeLocation",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeLocation",
+      "field": "row",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeLocation",
+      "field": "column",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeLocation",
+      "field": "purchased",
+      "type": "Boolean",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeLocation",
+          "field": "purchased"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeLocation",
+          "field": "purchased"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "false"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeLocation",
+      "field": "connections",
+      "type": "Int",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "TalentTree"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTree",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTree",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TalentTree",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTree",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTree",
+      "field": "specialization",
+      "type": "Specialization",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTree",
+      "field": "locations",
+      "type": "TalentTreeLocation",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "CharacterTalent"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "CharacterTalent",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "CharacterTalent",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "CharacterTalent",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "talentId",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "row",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "column",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "CharacterTalent",
+      "field": "specialization",
+      "type": "Specialization",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "Talent"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Talent",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Talent",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Talent",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "activation",
+      "type": "TalentActivation",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "ranked",
+      "type": "Boolean",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "force",
+      "type": "Boolean",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "trees",
+      "type": "TalentTree",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "page",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Talent",
+      "field": "description",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Skill",
+      "field": "model",
+      "type": "SkillType",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Skill",
+      "field": "type"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+generator photon {
+  provider = "photonjs"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model User {
+  id       String  @default(cuid()) @id
+  email    String  @unique
+  password String
+  name     String?
+}
+
+enum System {
+  AOR
+  EOTE
+  FAD
+}
+
+enum Range {
+  Engaged
+  Short
+  Medium
+  Long
+  Extreme
+}
+
+enum CharacteristicName {
+  Brawn
+  Agility
+  Intellect
+  Cunning
+  Willpower
+  Presence
+}
+
+model Threshold {
+  id              String @default(cuid()) @id
+  threshold       Int
+  current         Int
+  woundsThreshold DerivedAttributes? @relation("WoundsThreshold")
+  strainThreshold DerivedAttributes? @relation("StrainThreshold")
+}
+
+model DefenseAttribute {
+  id      String  @default(cuid()) @id
+  ranged  Int     @default(0)
+  melee   Int     @default(0)
+}
+
+model Duty {
+  id            String  @default(cuid()) @id
+  model         String
+  description   String
+  current       Int     @default(0)
+}
+
+model Experience {
+  id          String @default(cuid()) @id
+  total       Int
+  available   Int
+}
+
+model Characteristic {
+  id        String  @default(cuid()) @id
+  brawn     Int     @default(0)
+  agility   Int     @default(0)
+  intellect Int     @default(0)
+  cunning   Int     @default(0)
+  willpower Int     @default(0)
+  presence  Int     @default(0)
+}
+
+model DerivedAttributes {
+  id      String    @default(cuid()) @id
+  soak    Int
+  wounds  Threshold @relation("WoundsThreshold")
+  strain  Threshold @relation("StrainThreshold")
+  defense DefenseAttribute
+}

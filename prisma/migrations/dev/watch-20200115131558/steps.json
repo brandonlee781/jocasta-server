@@ -1,0 +1,25 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "CharacterSkill",
+      "field": "character",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "CharacterSkill",
+          "field": "character"
+        },
+        "directive": "relation"
+      },
+      "argument": "onDelete",
+      "value": "CASCADE"
+    }
+  ]
+}

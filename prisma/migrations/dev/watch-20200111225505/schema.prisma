@@ -1,0 +1,162 @@
+generator photon {
+  provider = "photonjs"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+model User {
+  id       String  @default(cuid()) @id
+  email    String  @unique
+  password String
+  name     String?
+}
+
+enum GearCondition {
+  NONE
+  MINOR
+  MODERATE
+  MAJOR
+}
+
+enum System {
+  AOR
+  EOTE
+  FAD
+}
+
+enum Range {
+  Engaged
+  Short
+  Medium
+  Long
+  Extreme
+}
+
+enum CharacteristicName {
+  Brawn
+  Agility
+  Intellect
+  Cunning
+  Willpower
+  Presence
+}
+
+enum SkillType {
+  General
+  Combat
+  Knowledge
+}
+
+enum WeaponSkill {
+  Brawl
+  RangedLight
+  RangedHeavy
+  Melee
+  Gunnery
+  Lightsaber
+}
+
+// Career
+
+
+// Character Fields
+model Threshold {
+  id              String @default(cuid()) @id
+  threshold       Int
+  current         Int
+  woundsThreshold DerivedAttributes? @relation("WoundsThreshold")
+  strainThreshold DerivedAttributes? @relation("StrainThreshold")
+}
+
+model DefenseAttribute {
+  id      String  @default(cuid()) @id
+  ranged  Int     @default(0)
+  melee   Int     @default(0)
+}
+
+model Duty {
+  id            String  @default(cuid()) @id
+  model         String
+  description   String
+  current       Int     @default(0)
+}
+
+model Experience {
+  id          String @default(cuid()) @id
+  total       Int
+  available   Int
+}
+
+// Characteristics
+model Characteristic {
+  id        String  @default(cuid()) @id
+  brawn     Int     @default(0)
+  agility   Int     @default(0)
+  intellect Int     @default(0)
+  cunning   Int     @default(0)
+  willpower Int     @default(0)
+  presence  Int     @default(0)
+}
+
+model DerivedAttributes {
+  id      String    @default(cuid()) @id
+  soak    Int
+  wounds  Threshold @relation("WoundsThreshold")
+  strain  Threshold @relation("StrainThreshold")
+  defense DefenseAttribute
+}
+
+// Character
+
+// Gear
+model Gear {
+  id            String  @default(cuid()) @id
+  name          String
+  quantity      Int     @default(1)
+  encumberance  Int     @default(0)
+  description   String?
+  rarity        Int     @default(1)
+}
+
+model Attachment {
+  id            String  @default(cuid()) @id
+  name          String
+  hardPoints    Int
+  base          String
+  modifications String
+}
+
+model Weapon {
+  id            String          @default(cuid()) @id
+  name          String
+  quantity      Int             @default(1)
+  encumberance  Int             @default(0)
+  description   String?
+  rarity        Int             @default(1)
+  hardPoints    Int             @default(0)
+  condition     GearCondition?
+  attachments   Attachment[]
+  make          String?
+  range         Range
+  skill         WeaponSkill
+  damage        Int
+  critical      Int
+}
+
+model Armor {
+  id            String            @default(cuid()) @id
+  name          String
+  quantity      Int               @default(1)
+  encumberance  Int               @default(0)
+  description   String?
+  rarity        Int               @default(1)
+  hardPoints    Int               @default(0)
+  condition     GearCondition?
+  attachments   Attachment[]
+  defense       DefenseAttribute?
+  soak          Int
+  wearing       Boolean
+}

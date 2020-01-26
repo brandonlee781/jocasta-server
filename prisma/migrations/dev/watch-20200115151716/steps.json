@@ -1,0 +1,196 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateModel",
+      "model": "DerivedAttribute"
+    },
+    {
+      "tag": "CreateField",
+      "model": "DerivedAttribute",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "DerivedAttribute",
+      "field": "soak",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "DerivedAttribute",
+      "field": "wounds",
+      "type": "Threshold",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "wounds"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "wounds"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"WoundsThreshold\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "DerivedAttribute",
+      "field": "strain",
+      "type": "Threshold",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "strain"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "strain"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"StrainThreshold\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "DerivedAttribute",
+      "field": "defense",
+      "type": "DefenseAttribute",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "DerivedAttribute",
+      "field": "character",
+      "type": "Character",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "character"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttribute",
+          "field": "character"
+        },
+        "directive": "relation"
+      },
+      "argument": "onDelete",
+      "value": "CASCADE"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "DerivedAttributes"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Threshold",
+      "field": "woundsThreshold",
+      "type": "DerivedAttribute"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Threshold",
+      "field": "strainThreshold",
+      "type": "DerivedAttribute"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "DefenseAttribute",
+      "field": "derivedAttribute",
+      "type": "DerivedAttribute"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "derivedAttribute",
+      "type": "DerivedAttribute",
+      "arity": "Optional"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Character",
+      "field": "derivedAttributes"
+    }
+  ]
+}

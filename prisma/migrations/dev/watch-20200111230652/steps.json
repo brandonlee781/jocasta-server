@@ -1,0 +1,270 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateModel",
+      "model": "Character"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Character",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Character",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Character",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "name",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "system",
+      "type": "System",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "species",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "specializations",
+      "type": "Specialization",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "characteristics",
+      "type": "Characteristic",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "derivedAttributes",
+      "type": "DerivedAttributes",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "skills",
+      "type": "CharacterSkill",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "talents",
+      "type": "CharacterTalent",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "gear",
+      "type": "Gear",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "weapons",
+      "type": "Weapon",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "armor",
+      "type": "Armor",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "encumberance",
+      "type": "Threshold",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "experience",
+      "type": "Experience",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "resources",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "credits",
+      "type": "Int",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "injuries",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "background",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "description",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "motivation",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "duties",
+      "type": "Duty",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "imageUrl",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "notes",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "user",
+      "type": "User",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "createdAt",
+      "type": "DateTime",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Character",
+          "field": "createdAt"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Character",
+          "field": "createdAt"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "now()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Character",
+      "field": "updatedAt",
+      "type": "DateTime",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Character",
+          "field": "updatedAt"
+        },
+        "directive": "updatedAt"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "characters",
+      "type": "Character",
+      "arity": "List"
+    }
+  ]
+}

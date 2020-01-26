@@ -1,0 +1,42 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "DefenseAttribute",
+      "field": "derivedAttribute",
+      "type": "DerivedAttributes",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "DefenseAttribute",
+          "field": "derivedAttribute"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DefenseAttribute",
+          "field": "derivedAttribute"
+        },
+        "directive": "relation"
+      },
+      "argument": "onDelete",
+      "value": "CASCADE"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "DefenseAttribute",
+      "field": "derivedAttributes"
+    }
+  ]
+}

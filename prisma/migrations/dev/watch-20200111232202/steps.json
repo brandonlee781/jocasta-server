@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Skill",
+      "field": "type",
+      "type": "SkillType",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Skill",
+      "field": "model"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Specialization",
+      "field": "id",
+      "type": "Int"
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Specialization",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    }
+  ]
+}

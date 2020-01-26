@@ -1,0 +1,278 @@
+generator photon {
+  provider = "photonjs"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+enum GearCondition {
+  NONE
+  MINOR
+  MODERATE
+  MAJOR
+}
+
+enum System {
+  AOR
+  EOTE
+  FAD
+}
+
+enum Range {
+  Engaged
+  Short
+  Medium
+  Long
+  Extreme
+}
+
+enum CharacteristicName {
+  Brawn
+  Agility
+  Intellect
+  Cunning
+  Willpower
+  Presence
+}
+
+enum SkillType {
+  General
+  Combat
+  Knowledge
+}
+
+enum WeaponSkill {
+  Brawl
+  RangedLight
+  RangedHeavy
+  Melee
+  Gunnery
+  Lightsaber
+}
+
+enum TalentActivation {
+  Passive
+  Action
+  Maneuver
+  Incidental
+  OutOfTurn
+}
+
+enum TalentTreeConnection {
+  TOP
+  RIGHT
+  BOTTOM
+  LEFT
+}
+
+// Career
+model Career {
+  id                Int               @id
+  name              String
+  skills            Skill[]
+  specializations   Specialization[]
+}
+
+// Character Fields
+model Threshold {
+  id              String @default(cuid()) @id
+  threshold       Int
+  current         Int
+  woundsThreshold DerivedAttributes? @relation("WoundsThreshold")
+  strainThreshold DerivedAttributes? @relation("StrainThreshold")
+}
+
+model DefenseAttribute {
+  id      String  @default(cuid()) @id
+  ranged  Int     @default(0)
+  melee   Int     @default(0)
+}
+
+model Duty {
+  id            String  @default(cuid()) @id
+  model         String
+  description   String
+  current       Int     @default(0)
+}
+
+model Experience {
+  id          String @default(cuid()) @id
+  total       Int
+  available   Int
+}
+
+// Characteristics
+model Characteristic {
+  id        String  @default(cuid()) @id
+  brawn     Int     @default(0)
+  agility   Int     @default(0)
+  intellect Int     @default(0)
+  cunning   Int     @default(0)
+  willpower Int     @default(0)
+  presence  Int     @default(0)
+}
+
+model DerivedAttributes {
+  id      String    @default(cuid()) @id
+  soak    Int
+  wounds  Threshold @relation("WoundsThreshold")
+  strain  Threshold @relation("StrainThreshold")
+  defense DefenseAttribute
+  character Character?
+}
+
+// Character
+model Character {
+  id                  String            @default(cuid()) @id
+  name                String
+  system              System
+  species             String
+  specializations     Specialization[]
+  characteristics     Characteristic
+  derivedAttributes   DerivedAttributes?
+  skills              CharacterSkill[]
+  talents             CharacterTalent[]
+  gear                Gear[]
+  weapons             Weapon[]
+  armor               Armor[]
+  encumberance        Threshold?
+  experience          Experience?
+  resources           String?
+  credits             Int?
+  injuries            String?
+  background          String?
+  description         String?
+  motivation          String?
+  duties              Duty[]
+  imageUrl            String?
+  notes               String?
+  user                User
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  @@index([id, name])
+}
+
+// Gear
+model Gear {
+  id            String  @default(cuid()) @id
+  name          String
+  quantity      Int     @default(1)
+  encumberance  Int     @default(0)
+  description   String?
+  rarity        Int     @default(1)
+}
+
+model Attachment {
+  id            String  @default(cuid()) @id
+  name          String
+  hardPoints    Int
+  base          String
+  modifications String
+}
+
+model Weapon {
+  id            String          @default(cuid()) @id
+  name          String
+  quantity      Int             @default(1)
+  encumberance  Int             @default(0)
+  description   String?
+  rarity        Int             @default(1)
+  hardPoints    Int             @default(0)
+  condition     GearCondition?
+  attachments   Attachment[]
+  make          String?
+  range         Range
+  skill         WeaponSkill
+  damage        Int
+  critical      Int
+}
+
+model Armor {
+  id            String            @default(cuid()) @id
+  name          String
+  quantity      Int               @default(1)
+  encumberance  Int               @default(0)
+  description   String?
+  rarity        Int               @default(1)
+  hardPoints    Int               @default(0)
+  condition     GearCondition?
+  attachments   Attachment[]
+  defense       DefenseAttribute?
+  soak          Int
+  wearing       Boolean
+}
+
+// Skill
+model Skill {
+  id              Int                 @id
+  name            String              @unique
+  characteristic  CharacteristicName
+  type            SkillType
+  careers         Career[]
+  specializations Specialization[]
+}
+
+model CharacterSkill {
+  id        String  @default(cuid()) @id
+  skillId   String
+  career    Boolean @default(true)
+  rank      Int     @default(0)
+}
+
+// Specialization
+model Specialization {
+  id        Int      @id
+  name      String
+  skills    Skill[]
+  career    Career?
+  talents   Talent[]
+  characters Character[]
+}
+
+// Talent
+model TalentTreeLocation {
+  id            String  @default(cuid()) @id
+  row           Int
+  column        Int
+  purchased     Boolean @default(false)
+  connections   Int[]
+}
+
+model TalentTree {
+  id              String                @default(cuid()) @id
+  specialization  Specialization
+  locations       TalentTreeLocation[]
+}
+
+model CharacterTalent {
+  id              String          @default(cuid()) @id
+  talentId        String
+  row             Int
+  column          Int
+  specialization  Specialization
+}
+
+model Talent {
+  id            String            @default(cuid()) @id
+  name          String
+  activation    TalentActivation
+  ranked        Boolean
+  force         Boolean
+  trees         TalentTree[]
+  page          String?
+  description   String?
+}
+
+// User
+model User {
+  id          String      @default(cuid()) @id
+  email       String      @unique
+  password    String
+  name        String?
+  characters  Character[]
+
+  @@index([email, name])
+}

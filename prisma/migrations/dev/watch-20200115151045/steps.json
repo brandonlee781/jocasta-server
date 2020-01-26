@@ -1,0 +1,59 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttributes",
+          "field": "wounds"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"WoundsThreshold\""
+    },
+    {
+      "tag": "DeleteArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttributes",
+          "field": "wounds"
+        },
+        "directive": "relation"
+      },
+      "argument": ""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttributes",
+          "field": "strain"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"StrainThreshold\""
+    },
+    {
+      "tag": "DeleteArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "DerivedAttributes",
+          "field": "strain"
+        },
+        "directive": "relation"
+      },
+      "argument": ""
+    }
+  ]
+}

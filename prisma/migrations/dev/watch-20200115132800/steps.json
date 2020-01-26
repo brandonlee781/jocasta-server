@@ -1,0 +1,87 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Threshold",
+          "field": "woundsThreshold"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"WoundsThreshold\""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Threshold",
+          "field": "woundsThreshold"
+        },
+        "directive": "relation"
+      },
+      "argument": "onDelete",
+      "value": "CASCADE"
+    },
+    {
+      "tag": "DeleteArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Threshold",
+          "field": "woundsThreshold"
+        },
+        "directive": "relation"
+      },
+      "argument": ""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Threshold",
+          "field": "strainThreshold"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"StrainThreshold\""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Threshold",
+          "field": "strainThreshold"
+        },
+        "directive": "relation"
+      },
+      "argument": "onDelete",
+      "value": "CASCADE"
+    },
+    {
+      "tag": "DeleteArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Threshold",
+          "field": "strainThreshold"
+        },
+        "directive": "relation"
+      },
+      "argument": ""
+    }
+  ]
+}

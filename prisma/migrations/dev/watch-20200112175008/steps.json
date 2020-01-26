@@ -1,0 +1,101 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateModel",
+      "model": "TalentTreeNode"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeNode",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeNode",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeNode",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TalentTreeNode",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeNode",
+      "field": "row",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeNode",
+      "field": "column",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeNode",
+      "field": "connections",
+      "type": "Int",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeNode",
+      "field": "talent",
+      "type": "Talent",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TalentTreeNode",
+      "field": "specialization",
+      "type": "Specialization",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "TalentTreeLocation"
+    },
+    {
+      "tag": "DeleteModel",
+      "model": "TalentTree"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Specialization",
+      "field": "talents",
+      "type": "TalentTreeNode"
+    }
+  ]
+}
